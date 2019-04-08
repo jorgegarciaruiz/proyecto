@@ -8,75 +8,81 @@ body{
     top:0;
     right:0;
     bottom:0;
-    z-index:-3;
+    z-index:-300;
     overflow:auto;
     background-color: #9fa4a7;
 }
 #portada{
     position: relative;
-    left: 0;
+
     top: 0;
-    height: 100%;
+    height:calc(100% - 54px);
+    left: 0;
     width: 100%;
+
     /*background-color: #b3ffec;*/
     background-image: linear-gradient(0deg,#b3ffec 0%,#DCAE1D 100%);
     margin: 0;
 }
+.portadajs{
+    left: 17%;
+    width: 83%;
+
+}
 #portada h1{
     text-align: center;
     color: black;
-    padding-top: 16%;
+    padding-top: 12%;
     font-size: 5em;
     margin-top: 0;
     margin-left: 10%;
     margin-right: 10%;
+    margin-bottom: 0;
 
 }
 #portada h2{
     text-align: center;
 }
 nav{
-    position: absolute;
-    top: 0;
-    width: 18%;
-    left: 1%;
-    bottom: 0;
-    border-radius: 25px;
+    position: fixed;
+    top: 54px;
+    width: 16.75%;
+    z-index: -250;
 
-    margin: 10px 0 10px 0.5%;
-    border: 2px solid white;
+
+    left: 0;
+    bottom: 0;
+
+    /*border-radius: 25px;*/
+
+    /*margin: 10px 0 10px 0.5%;*/
+    /*border: 2px solid white;*/
 }
-#menu1{
+.quitar{
+    display: none;
+ }
+#menujs{
+    position: sticky;
+    top: 0;
+    background-color: #d8be82;
+    z-index: 50;
+
+}
+#menujs h2{
+    display: inline-block;
+    margin: -20px 0 -20px 38% ;
+    font-size: 3em;
+    text-align: center;
+}
+#menu,#menu5{
     background-color: rgb(216, 216, 216);
 }
-#menu2{
+#menu2,#menu4{
     background-color: rgb(191, 191, 191);
 }
 #menu3{
     background-color: rgb(160, 162, 165);
 }
-#menu4{
-    background-color: rgb(191, 191, 191);
-}
-#menu5{
-    background-color: rgb(216, 216, 216);
-}
-
-/*#menu1{
-    background-color: rgb(216, 216, 216);
-}
-#menu2{
-    background-color: rgb(191, 191, 191);
-}
-#menu3{
-    background-color: rgb(216, 216, 216);
-}
-#menu4{
-    background-color: rgb(191, 191, 191);
-}
-#menu5{
-    background-color: rgb(216, 216, 216);
-}*/
 .cuerp{
     position: relative;
 
@@ -92,8 +98,8 @@ nav{
     text-align: center;
     background-color: rgb(  165, 4, 4);
     margin: 0;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 60px;
+    padding-bottom: 50px;
     font-size: 3em;
     border-radius: 10px 10px 0 0;
     color: white;
@@ -108,18 +114,24 @@ nav{
 .conten{
     position: relative;
     top: 0;
-    left: 21%;
     right: 2%;
-    width: 77%;
+    left: 2%;
+    width: 96%;
     border-radius: 10px;
     background-color: #daefff;
     /*overflow: auto;*/
+
     padding-bottom: 3em;
     border: 2px solid white;
+}
+.contenjs{
+    left: 21%;
+    width: 77%;
 }
 #cuerpo1{
     margin-top: -12%;
 }
+
 
 nav a{
     text-align: center;
@@ -145,7 +157,7 @@ nav a:hover{
 }
 .stick{
     position: sticky;
-    top: 5px;
+    top: 0;
     margin-top: 0;
     margin-bottom: 100%;
 }
@@ -160,24 +172,28 @@ nav a:hover{
 #logostick{
 
     position: sticky;
-    top: 0;
+    top: 54px;
     margin-left: 80%;
     display: block;
 }
-img{
+#logostick img{
     width: 100%;
 
+}
+#menujs img{
+    height: 50px;
 }
 #telonsal{
     position: fixed;
     width: 19.5%;
     right: 1%;
-    top: 0;
-    height: 100%;
-    z-index: -1;
+    bottom: 0;
+    top: 50px;
+    z-index: -100;
     background-image: url("../img/lateral1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+
 
 
 
@@ -193,7 +209,7 @@ img{
     background-color: rgba(66,66,66,0.95);
     color: white;
     text-align: center;
-    z-index: -2;
+    z-index: -200;
 
 }
 #creditos h2{
@@ -204,6 +220,10 @@ img{
     margin-left: -20%;
     margin-top: 0;
 
+}
+#creditos h2:hover{
+    background-color: white;
+    color: black;
 }
 #creditos p{
     color: white;
