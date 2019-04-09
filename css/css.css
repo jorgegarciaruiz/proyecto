@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 body{
     font-family: 'Montserrat', sans-serif;
+    margin: 0;
 }
 #fondo{
     position:fixed;
@@ -43,13 +44,11 @@ body{
 #portada h2{
     text-align: center;
 }
-nav{
+#menu{
     position: fixed;
     top: 54px;
     width: 16.75%;
     z-index: -250;
-
-
     left: 0;
     bottom: 0;
 
@@ -124,16 +123,16 @@ nav{
     padding-bottom: 3em;
     border: 2px solid white;
 }
-.contenjs{
-    left: 21%;
-    width: 77%;
+.cuerpjs{
+    left: 16.75%;
+    width: 63%;
 }
 #cuerpo1{
     margin-top: -12%;
 }
 
 
-nav a{
+#menu a{
     text-align: center;
     color: gray;
     font-size: 1.5em;
@@ -147,10 +146,10 @@ nav a{
     margin-top: 5px;
     border-radius: 10px;
 }
-nav a:first-child{
+#menu a:first-child{
     margin-top: 40px;
 }
-nav a:hover{
+#menu a:hover{
     border: 3px solid white;
     background-color: gray;
     color: white;
