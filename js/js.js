@@ -13,12 +13,12 @@ $(function () {
             $("#portada").css("left", "17%");
             $("#portada").css("width", "83%");
             $("#menu").removeClass("quitar");
-            $(".conten").addClass("contenjs");
+            $(".cuerp").addClass("cuerpjs");
         }else{
             $("#portada").css("left", "");
             $("#portada").css("width", "100%");
             $("#menu").addClass("quitar");
-            $(".conten").removeClass("contenjs");
+            $(".cuerp").removeClass("cuerpjs");
         }
     });
 })
