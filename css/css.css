@@ -3,6 +3,12 @@ body{
     font-family: 'Montserrat', sans-serif;
     margin: 0;
 }
+h2,figure{
+    text-align: center;
+}
+#img1,#img2,#img3{
+    width: 75%;
+}
 #fondo{
     position:fixed;
     left:0;
