@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Proyecto</title>
     <link rel="stylesheet" href="css/css.css">
 </head>
 <body>
@@ -38,28 +38,55 @@
             <p>En primer lugar para la elaboración del proyecto se necesitará una Raspberry PI donde se alojará tanto el servidor web Apache como el servidor MYSQL</p>
             <p>Al conectar la Raspberry con el cable RJ45 o Ethernet se necesitará una aplicación externa que se deberá instalar.
                 Esa aplicación llamada PuTTY podrá conectarse con la Raspberry via SSH añadiendo la dirección IP de la máquina a traves del puerto 22 que para que dicha conexión funcione debe estar abierto.</p>
-            <img src="img/puttyssh.PNG" alt="putty">
+            <figure>
+                <img src="img/puttyssh.PNG" alt="putty">
+                <figcaption><strong>Fig.1</strong> Conexión con la Raspberry via PuTTY</figcaption>
+            </figure>
+
             <p>Al conectarse con la máquina Raspberry, se necesitará un usuario y un password para acceder a la terminal de dicha máquina.
             Se puede acceder con el <strong>Usuario "pi"</strong> y con la<strong> contraseña raspberry</strong> como se puede ver en la siguiente imagen</p>
-            <img src="img/logindefecto.PNG" alt="login">
+            <figure>
+                <img src="img/logindefecto.PNG" alt="login">
+                <figcaption><strong>Fig.2</strong> Usuario y Password por defecto</figcaption>
+            </figure>
             <p>Cuando ya se ha conectado con la Raspberry, uno de los inconvenientes que se aprecian a priori es la inseguridad de esta máquina ya que el usuario y el password es una informacion por defecto vulnerable
             por lo que es conveniente cambiar el usuario y la contraseña añadiendo nuevos usuarios y eliminando el que viene por defecto. </p>
             <p>Primero añadiremos dos usuarios, uno con privilegios de administració y otro que carece de ellos.
                 Para añadirles se escribe el comando <strong>adduser</strong>. El usuario que tendrá privilegios es el llamado
                 <strong>grupo5root</strong> y el que no los tiene es el usuario <strong>grupo5</strong>. después de crearlos se eliminará el usuario por defecto gracias al comando <strong>deluser</strong> como se puede apreciar en la imagen</p>
-            <img src="img/borradousuaropi.PNG" alt="pi">
-            <p>Al acabar con el proceso anterior los usuarios restantes que quedan son los que hemos añadido</p>
-            <img src="img/usuarios.png" alt="usuarios">
+            <figure>
+                <img src="img/borradousuaropi.PNG" alt="pi">
+                <figcaption><strong>Fig.3</strong> Eliminación del usuariopor defecto</figcaption>
+            </figure>
+            <p>Al acabar con el proceso anterior los usuarios restantes que quedan en la Raspberry son los que hemos añadido</p>
+            <figure>
+                <img src="img/usuarios.png" alt="usuarios">
+                <figcaption><strong>Fig.4</strong> Usuarios restantes</figcaption>
+            </figure>
             <p>Tras quedar asegurar la Raspberry, el siguiente paso será conseguir conexión tanto a la red local como a Internet. Para ello disponemos del diagrama de red
                 donde se le tendrá que asignar la dirección IP <strong>192.168.41.205/24</strong> a la máquina Raspberry.
                 Para conseguir la conectividad deberá encontrarse en el mismo segmento que la puerta de enlace que le dispondrá de la red wifi. Esa puerta de enlace es la <strong>192.168.41.10/24</strong>
                 la cual se le asigna al router del colegio.</p>
-            <img src="img/diagramaproyecto.PNG" alt="diagrama">
+            <figure>
+                <img src="img/diagramaproyecto.PNG" alt="diagrama">
+                <figcaption><strong>Fig.5</strong> Diagrama de red del ejercicio</figcaption>
+            </figure>
             <p>Para asignarle una dirección IP, hay que editar el fichero de las configuraciones de red que se encuentra en la dirección /etc/network/interfaces.
             Para editar dicho fichero, abrimos el editor de texto nano y escribimos la dirección lógica pertinente, es decir, la dirección IP de la máquina, de la gateway de los dns... Después reiniciamos la máquina para que se apliquen los cambios</p>
-            <img src="img/configuracionraspberry.PNG" alt="direcciones">
+            <figure>
+                <img src="img/configuracionraspberry.PNG" alt="direcciones">
+                <figcaption><strong>Fig.6</strong> Configuración lógica de la Raspberry Pi</figcaption>
+            </figure>
             <p>Por último, para comprobar que hay acceso a internet o a la red local se hace un ping a la dirección de la gateway. Como no ha habido error al asignar la IP dicha comunicación será satisfactoria.</p>
-            <img src="img/pingpuertadeenlace.PNG" alt="ping">
+            <figure>
+                <img src="img/pingpuertadeenlace.PNG" alt="ping">
+                <figcaption><strong>Fig.7</strong> Ping a la red local</figcaption>
+            </figure>
+            <p>Despues el siguiente paso es hacer otro ping pero en este caso a cualquier direccion de la web, la elegida para comprobar la conexion de la máquina a la web es a de <strong>google.com</strong></p>
+            <figure>
+                <img src="img/pingoogle.png" alt="google">
+                <figcaption><strong>Fig.8</strong> Ping a Internet</figcaption>
+            </figure>
         </div>
     </div>
 
@@ -70,40 +97,81 @@
             <h1>Instalación Servidor web APACHE</h1>
             <p>Para llevar a cabo el siguiente proceso, se deberá instalar en la raspberry dos módulos o paquetes.
                 Para preparar la instalación se debera actualizar los paquetes disponible y sus versiones (apt update), después se instalará dichas versiones con apt upgrade.</p>
-            <img src="img/instalacionapache.PNG" alt="apache1">
+            <figure>
+                <img src="img/instalacionapache.PNG" alt="apache1">
+                <figcaption><strong>Fig.9</strong> Comando para la preparación de la instalación</figcaption>
+            </figure>
+
             <p> tras actualizar la lista de los paquetes se deberá instalar el primero de ellos que es el llamado apache.
                 Para instalarlo se deberá escribir el comando <strong>apt install</strong> con el nombre del paquete que se llama <strong>apache2</strong>
-                </p><img src="img/instalador%20apache.PNG" alt="apache2">
+            </p>
+            <figure>
+                <img src="img/instalador%20apache.PNG" alt="apache2">
+                <figcaption><strong>Fig.10</strong> Comando de instalación de Apache</figcaption>
+            </figure>
+
             <p>Lo siguiente es instalar el segundo paquete, para ello hay que volver hay que escribir el comando anterior pero cambiando el nombre del paquete que en este caso es el paquete <strong>php</strong></p>
-            <img src="img/instalacionphp.PNG" alt="php">
+            <figure>
+                <img src="img/instalacionphp.PNG" alt="php" id="img1">
+                <figcaption><strong>Fig.11</strong> Comando Instalación PHP</figcaption>
+            </figure>
+
             <p>Cuando se ha instalado los dos paquetes se comprobará que ha creado un archivo index.html en la dirección /var/www/html. Ese archivo index.html será la página donde se alojará el servidor web apache</p>
-            <img src="img/ubicacionapacheweb.PNG" alt="indexapache">
+            <figure>
+                <img src="img/ubicacionapacheweb.PNG" alt="indexapache">
+                <figcaption><strong>Fig.12</strong> Ubicación de los archivos de apache</figcaption>
+            </figure>
             <p>Después, se escribe en el buscador del navegador la dirección ip de las raspberry que en ese caso es la 192.168.41.205 donde aparecerá lo siguiente:</p>
-            <img src="img/webapachedefault.PNG" alt="apacheweb">
+            <figure>
+                <img src="img/webapachedefault.PNG" alt="apacheweb">
+                <figcaption><strong>Fig.13</strong> Página por defecto de Aoache</figcaption>
+            </figure>
+
             <p>Por último, hay que compatibilizar el módulo de php. Para ello hemos anteriormente instalado el paquete. Después se crea una página donde tenga indexado el código php
             pero dicho archivo debe estar en la misma ruta que el servidor apache (/var/www/html)</p>
-            <img src="img/creacionindex.php.PNG" alt="index">
+            <figure>
+                <img src="img/creacionindex.php.PNG" alt="index">
+                <figcaption><strong>Fig.14</strong> Creación de la página con código PHP</figcaption>
+            </figure>
+
             <p>y en dicho archivo aparecerá el siguiente código:</p>
-            <img src="img/codigophp.PNG" alt="codigo">
+            <figure>
+                <img src="img/codigophp.PNG" alt="codigo">
+                <figcaption><strong>Fig.15</strong> Creación del código</figcaption>
+            </figure>
+
             <p>Por último para corroborar que ralmente funciona se escribirá en el navegador la dirección url <strong>http://192.168.41.205/index.php</strong> y tiene que aparecer el resultado del código creado.</p>
-            <img src="img/compatibilidadphp.PNG" alt="compatibilidad">
+            <figure>
+                <img src="img/compatibilidadphp.PNG" alt="compatibilidad">
+                <figcaption><strong>Fig.16</strong> Página con el código PHP</figcaption>
+            </figure>
+
         </div>
 
     </div>
     <div class="cuerp" id="cuerpo3">
         <div class="conten" id="web">
             <h1>Memoria web</h1>
-            <p>Enlace a Github donde está los archivos necesarios para la web</p>
-            <p></p>
-            <p>Enlace a Github Pages</p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
+            <p>Enlace a <a target="_blank" href="https://github.com/jorgegarciaruiz/proyecto">GitHub</a> donde está los archivos necesarios para la web</p>
 
+            <p>Enlace a <a target="_blank" href="https://jorgegarciaruiz.github.io/proyecto/">GitHub Pages</a></p>
+
+            <p>Para el alojamiento de la web en apache instalaremos en la Raspberry el módulo de git con el comando <strong>apt-install git</strong>
+            </p>
+            <figure>
+                <img src="img/pastedImage.png" alt="instalacion git">
+                <figcaption><strong>Fig.17</strong> Instalación de git en Raspberry</figcaption>
+            </figure>
+            <p>Después entraremos a la dirección de los archivos de Apache que se encuentran en <strong>/var/www/html</strong> con el comando <strong>cd</strong>.</p>
+            <figure>
+                <img src="img/comandocd.png" alt="comandocd">
+                <figcaption><strong>Fig.18</strong> Comando para entrar al directorio Html</figcaption>
+            </figure>
+            <p>Por último, clonaremos el repositorio donde se encuentra los archivos de la web y sólamente quedaría probar si funciona</p>
+            <figure>
+                <img src="img/comandocd.png" alt="comandocd">
+                <figcaption><strong>Fig.19</strong> Página Web en el servidor Apache</figcaption>
+            </figure>
         </div>
 
     </div>
@@ -112,31 +180,70 @@
         <div class="conten" id="mysql">
             <h1>MySQL</h1>
             <p>En primer lugar hay que instalar el paquete mysql con el comando apt install que se ha mencionado anteriormente</p>
-            <img src="img/instalacionmysql.PNG" alt="mysql">
+            <figure>
+                <img src="img/instalacionmysql.PNG" alt="mysql">
+                <figcaption><strong>Fig.20</strong> Instalación de MySQL</figcaption>
+            </figure>
+
             <p>Por otra parte se le puede añadir una interfaz gráfica para MySQL que se llama phpmyadmin, Para ello hay que instalar su paquete y cuando se haya realizado dicha instalación se podrá verificar si en la dirección http://192.168.41.205/phpmyadmin
             aparece una página index.php. En dicha página se podrá poner la información de acceso a mysql, es decir, el usuario y el password.</p>
             <p>Cuando se ha creado el servidor de mysql hay que cambiar la contraseña del usuario root ya que este en el paquete no viene con contraseña. Para añadir dicha contraseña 
             hay que entrar a la propia base de datos y después escribir la consulta que posteriormente cambiará la contraseña. La consulta es la siguiente:
-                <img src="img/cambiocontraseñaroot.PNG" alt="root"> </p>
+            </p>
+            <figure>
+                <img src="img/cambiocontraseñaroot.PNG" alt="root">
+                <figcaption><strong>Fig.21</strong> Cambio de la contraseña del root</figcaption>
+            </figure>
+
             <p>Para añadir más seguridad al servidor MYSQL, se le ha añadido un nuevo usuario.
                 Este usuario tendrá todos los privilegios y podrá escribir todas las consultas que desee.
                 Para crear dicho usuario hay que entrar a la base de datos y escribir la consulta pertinente .
                 En ella aparecerá el nombre de usuario y la contraseña que es igual que el login</p>
-            <img src="img/creacionusuariomysql.PNG" alt="usuariomysql">
+            <figure>
+                <img src="img/creacionusuariomysql.PNG" alt="usuariomysql">
+                <figcaption><strong>Fig.22</strong> Creación de un usuario con privilegios</figcaption>
+            </figure>
+
             <p>y después añadimos los privilegios al usuario creado</p>
-            <img src="img/privilegiosusuario.PNG" alt="usuariomysql">
+            <figure>
+                <img src="img/privilegiosusuario.PNG" alt="usuariomysql">
+                <figcaption><strong>Fig.23</strong> Adición de dichos privilegios</figcaption>
+            </figure>
+
             <p>Tras securizar el servidor MYSQL se dispondrá a realizar los diagramas de la futura base de datos los cuales son el diagrama entidad-relación
                 y tras la creación de este se hará el paso a un diagrama relacional</p>
             <p>Los diagramas realizados son los siguientes:</p>
-            <img src="img/diagrama-er.PNG" alt="entidad">
-            <img src="img/relacional.PNG" alt="relacional">
-            <p>El siguiente proceso es crear las tablas de la base de datos. Para hacer este proceso se ha hecho con el programa Datagrip el cual para que funcione hay que abrir el puerto 3306 de MYSQL y después
-            abrir el archivo de configuración de servidores de MYSQL y añadir que todas las direcciones IP puedan acceder a dicha base de datos ya que antes estaba configurado para direcciones localhost</p>
-            <img src="img/configurarmysqlparadatagrip.PNG" alt="data2">
-            <img src="img/adicionconexioncondatagrip.PNG" alt="data">
-            <p>Por último, hay que ir a la aplicación Datagrip y crear una nueva base de datos vinculada a la de MySQL. Dichos datos se pueden ver en la imagen siguiente:</p>
-            <img src="img/datagrip.PNG" alt="datagrip">
+            <figure>
+                <img src="img/diagrama-er.PNG" alt="entidad" id="img2">
+                <figcaption><strong>Fig.24</strong> Diagrama Entidad-Raleción del proyecto</figcaption>
+            </figure>
 
+            <figure>
+                <img src="img/relacional.PNG" alt="relacional">
+                <figcaption><strong>Fig.25</strong> Diagrama Relacional del proyecto</figcaption>
+            </figure>
+
+            <p>El siguiente proceso es crear las tablas de la base de datos. Para hacer este proceso se ha hecho con el programa Datagrip el cual para que funcione hay que abrir el puerto 3306 de MYSQL y después
+            abrir el archivo de configuración de servidores de MYSQL y añadir que todas las direcciones IP puedan acceder a dicha base de datos ya que antes estaba configurado para direcciones localhost.
+                Cuando se haya acabado de rellenar y crear la base de datos lo dejamos con la configuración localhost ya que es mas seguro</p>
+            <figure>
+                <img src="img/configurarmysqlparadatagrip.PNG" alt="data2">
+                <figcaption><strong>Fig.26</strong> Archivo de configuración de MySQL para compatibilizarlo con Datagrip</figcaption>
+            </figure>
+
+            <figure>
+                <img src="img/adicionconexioncondatagrip.PNG" alt="data">
+                <figcaption><strong>Fig.27</strong> Conexión con todas las direcciones IP</figcaption>
+            </figure>
+
+            <p>Por último, hay que ir a la aplicación Datagrip y crear una nueva base de datos vinculada a la de MySQL. Dichos datos se pueden ver en la imagen siguiente:</p>
+            <figure>
+                <img src="img/datagrip.PNG" alt="datagrip">
+                <figcaption><strong>Fig.28</strong> Data Sources de Datagrip</figcaption>
+            </figure>
+
+            <p>El código donde se han creado tanto las consultas como las tablas de la base de datos de nuestro grupo se encontrará subido <strong>GitHub</strong></p>
+            <a target="_blank" href="https://github.com/jorgegarciaruiz/proyecto">Pinche aqui</a>
            
         </div>
 
@@ -145,63 +252,62 @@
 
         <div class="conten" id="costes">
             <h1>Costes</h1>
-            <p>La empresa elegida para sacar los costes reales para las necesidades del proyecto es Arsys.</p>
-            <p><strong>Arsys</strong> es un proveedor europeo de servicios de presencia en Internet,hosting gestionado, cloud computing y soluciones de infraestructura TIC</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi corporis cumque dicta
-                distinctio, dolore et fugit harum hic illo ipsum nisi, quam quis tempora temporibus vel, voluptate
-                voluptatem?</p>
-
+            <p>La empresa elegida para sacar los costes reales para las necesidades del proyecto es <a href="https://www.arsys.es/?s=cpc&c=12761403&a=403960983&gclid=EAIaIQobChMIgoHaseHC4QIVCaGzCh30WAEbEAAYASAAEgJY3vD_BwE" target="_blank">Arsys</a>.</p>
+            <p><strong>Arsys</strong> es un proveedor europeo de servicios de presencia en Internet,hosting gestionado, cloud computing y soluciones de infraestructura TIC.</p>
+            <figure>
+                <img src="img/ofertas.png" alt="ofertas" id="img3">
+                <figcaption><strong>Fig.29</strong> Ofertas hosting de la empresa seleccionada</figcaption>
+            </figure>
+            <p>Para la realización del proyecto la oferta que seleccionaría el grupo es <strong>Hosting Profesional</strong> por <strong>36€</strong> ya que el primer año nos lo dejan a 3€/mes.
+                Dicha oferta es la que mas se asemeja con las necesidades actuales del proyecto,es decir, que esta oferta nos proporciona <strong>10GB</strong> de espacio web, el cual, nos basta y nos sobra.
+             También nos ofrece una base de datos de MySQL con capacidad de <strong>1GB</strong> que aunque parezca escaso el almacenamiento, nos basta para cubrir las necesidades del proyecto
+                ya que el tamaño de la base de datos es de 200KB.
+                Esta oferta también nos proporciona compatibilidad con programación php, la cual, nos interesa ya que hemos utilizado el lenguaje.
+                Por último, nos regalan un <strong>un año</strong>de dominio <strong>GRATIS</strong> y proporciona tráfico ilimitado y 5 cuentas de correo con <strong>6GB</strong>.
+            </p>
+            <h2>Ventajas de la oferta elegida</h2>
+            <ul>
+                <li>Un año de dominios gratis</li>
+                <li>Transferencia Web y correo ilimitada</li>
+                <li>Restricción por Ip de MySQL</li>
+                <li>Espacio web de 10 GB</li>
+                <li>Garantía de 30 días</li>
+                <li>Soporte Técnico 24/7</li>
+            </ul>
+            <h2>Desventajas</h2>
+            <ul>
+                <li>No proporciona subdominios</li>
+                <li>Espacio a priori poco factible </li>
+                <li>No proporciona ASP en windows</li>
+            </ul>
+                <h2>Ventajas de la oferta Hosting Avanzado</h2>
+                <ul>
+                    <li>Subdominios ilimitados</li>
+                    <li>60 GB de espacio Web</li>
+                    <li>Certificado Basic SSL</li>
+                    <li>20 accesos FTP</li>
+                    <li>60x6GB de buzones POP3</li>
+                    <li>10 bases de datos de MySQL de 1GB</li>
+                </ul>
+                <h2>Desventajas</h2>
+                <ul>
+                    <li>No proporciona lista de correos</li>
+                    <li>Filtro Kasperby opcional por 5€/mes </li>
+                </ul>
+            <h2>Ventajas de la oferta Hosting Ilimitado</h2>
+            <ul>
+                <li>Subdominios ilimitados</li>
+                <li>Espacio Web ilimitado</li>
+                <li>Certificado Basic SSL</li>
+                <li>100 accesos FTP</li>
+                <li>250x6GB de buzones POP3</li>
+                <li>Bases de datos de MySQL de 1GB, ilimitados</li>
+            </ul>
+            <h2>Desventajas</h2>
+            <ul>
+                <li>Alto precio ya que es más acorde a empresas</li>
+                <li>A priori carece de desventajas importantes</li>
+            </ul>
         </div>
 
     </div>
